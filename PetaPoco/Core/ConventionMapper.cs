@@ -87,13 +87,16 @@ namespace PetaPoco
 
                 var prop = t.GetProperties().FirstOrDefault(p =>
                 {
-                    if (p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    if (p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    if (p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    return false;
+                    return p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase) ||
+                           p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase) ||
+                           p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase);
+                    //if (p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase))
+                    //    return true;
+                    //if (p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase))
+                    //    return true;
+                    //if (p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase))
+                    //    return true;
+                    //return false;
                 });
 
                 if (prop == null)

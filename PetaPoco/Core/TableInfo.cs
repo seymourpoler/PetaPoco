@@ -41,39 +41,32 @@ namespace PetaPoco
         /// <returns>A TableInfo instance</returns>
         public static TableInfo FromPoco(Type t)
         {
-            TableInfo ti = new TableInfo();
+            TableInfo tableInfo = new TableInfo();
 
             // Get the table name
             var a = t.GetCustomAttributes(typeof(TableNameAttribute), true);
-            ti.TableName = a.Length == 0 ? t.Name : (a[0] as TableNameAttribute).Value;
+            tableInfo.TableName = a.Length == 0 ? t.Name : (a[0] as TableNameAttribute).Value;
 
             // Get the primary key
             a = t.GetCustomAttributes(typeof(PrimaryKeyAttribute), true);
-            ti.PrimaryKey = a.Length == 0 ? null : (a[0] as PrimaryKeyAttribute).Value;
-            ti.SequenceName = a.Length == 0 ? null : (a[0] as PrimaryKeyAttribute).SequenceName;
-            ti.AutoIncrement = a.Length == 0 ? false : (a[0] as PrimaryKeyAttribute).AutoIncrement;
+            tableInfo.PrimaryKey = a.Length == 0 ? null : (a[0] as PrimaryKeyAttribute).Value;
+            tableInfo.SequenceName = a.Length == 0 ? null : (a[0] as PrimaryKeyAttribute).SequenceName;
+            tableInfo.AutoIncrement = a.Length == 0 ? false : (a[0] as PrimaryKeyAttribute).AutoIncrement;
 
-            if (string.IsNullOrEmpty(ti.PrimaryKey))
+            if (string.IsNullOrEmpty(tableInfo.PrimaryKey))
             {
-                var prop = t.GetProperties().FirstOrDefault(p =>
-                {
-                    if (p.Name.Equals("id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    if (p.Name.Equals(t.Name + "id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    if (p.Name.Equals(t.Name + "_id", StringComparison.OrdinalIgnoreCase))
-                        return true;
-                    return false;
-                });
+                var prop = t.GetProperties()
+                    .FirstOrDefault(p => (p.Name.Equals("id", StringComparison.OrdinalIgnoreCase)) ||
+                                         (p.Name.Equals(t.Name + "id", StringComparison.OrdinalIgnoreCase)) ||
+                                         (p.Name.Equals(t.Name + "_id", StringComparison.OrdinalIgnoreCase)));
 
                 if (prop != null)
                 {
-                    ti.PrimaryKey = prop.Name;
-                    ti.AutoIncrement = prop.PropertyType.IsValueType;
+                    tableInfo.PrimaryKey = prop.Name;
+                    tableInfo.AutoIncrement = prop.PropertyType.IsValueType;
                 }
             }
-
-            return ti;
+            return tableInfo;
         }
     }
 }

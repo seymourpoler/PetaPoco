@@ -57,8 +57,7 @@ namespace PetaPoco
         public static ColumnInfo FromProperty(PropertyInfo propertyInfo)
         {
             // Check if declaring poco has [Explicit] attribute
-            var explicitColumns =
-                propertyInfo.DeclaringType.GetCustomAttributes(typeof(ExplicitColumnsAttribute), true).Length > 0;
+            var explicitColumns = propertyInfo.DeclaringType.GetCustomAttributes(typeof(ExplicitColumnsAttribute), true).Length > 0;
 
             // Check for [Column]/[Ignore] Attributes
             var colAttrs = propertyInfo.GetCustomAttributes(typeof(ColumnAttribute), true);

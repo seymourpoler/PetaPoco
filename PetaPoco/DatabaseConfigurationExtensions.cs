@@ -276,7 +276,7 @@ namespace PetaPoco
         }
 
         /// <summary>
-        ///     Creates an instance of PetaPooc using the specified <paramref name="source" />.
+        ///     Creates an instance of PetaPoco using the specified <paramref name="source" />.
         /// </summary>
         /// <param name="source">The configuration source used to create and configure an instance of PetaPoco.</param>
         /// <returns>An instance of PetaPoco.</returns>

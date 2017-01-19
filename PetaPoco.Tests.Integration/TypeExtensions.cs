@@ -12,7 +12,8 @@ namespace PetaPoco.Tests.Integration
     {
         public static bool IsNullableType(this Type source)
         {
-            return (source.IsGenericType && source.GetGenericTypeDefinition() == typeof(Nullable<>));
+            return source.IsGenericType &&
+                   source.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
     }
 }

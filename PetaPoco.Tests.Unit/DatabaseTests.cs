@@ -23,11 +23,11 @@ namespace PetaPoco.Tests.Unit
 
         private readonly IProvider _provider = new Mock<IProvider>(MockBehavior.Loose).Object;
 
-        private IDatabase DB { get; }
+        private IDatabase dataBase { get; }
 
         public DatabaseTests()
         {
-            DB = new Database("cs", _provider);
+            dataBase = new Database("some connection string", _provider);
         }
 
         [Fact]
@@ -61,164 +61,167 @@ namespace PetaPoco.Tests.Unit
             Should.Throw<ArgumentNullException>(() => new Database((IDatabaseBuildConfiguration) null));
             Should.Throw<InvalidOperationException>(() =>
             {
-                try
-                {
-                    DatabaseConfiguration.Build().Create();
-                }
-                catch (Exception e)
-                {
-                    e.Message.ShouldContain("One or more connection strings");
-                    throw;
-                }
+                DatabaseConfiguration.Build().Create();
+
+                //try
+                //{
+
+                //}
+                //catch (Exception e)
+                //{
+                //    e.Message.ShouldContain("One or more connection strings");
+                //    throw;
+                //}
             });
             Should.Throw<InvalidOperationException>(() =>
             {
-                try
-                {
-                    DatabaseConfiguration.Build().UsingConnectionString("cs").Create();
-                }
-                catch (Exception e)
-                {
-                    e.Message.ShouldContain("Both a connection string and provider are required");
-                    throw;
-                }
+                DatabaseConfiguration.Build().UsingConnectionString("connection string").Create();
+
+                //try
+                //{
+                //}
+                //catch (Exception e)
+                //{
+                //    e.Message.ShouldContain("Both a connection string and provider are required");
+                //    throw;
+                //}
             });
         }
 
         [Fact]
         public void Update_GivenInvalidArguments_ShouldThrow()
         {
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, "primaryKeyName", new Person(), 1));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", null, new Person(), 1));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", "primaryKeyName", null, 1));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, "primaryKeyName", new Person(), 1));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", null, new Person(), 1));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", "primaryKeyName", null, 1));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, "primaryKeyName", new Person(), 1, null));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", null, new Person(), 1, null));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", "primaryKeyName", null, 1, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, "primaryKeyName", new Person(), 1, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", null, new Person(), 1, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", "primaryKeyName", null, 1, null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, "primaryKeyName", new Person()));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", null, new Person()));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", "primaryKeyName", (Person) null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, "primaryKeyName", new Person()));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", null, new Person()));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", "primaryKeyName", (Person) null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, "primaryKeyName", new Person(), null));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", null, new Person(), null));
-            Should.Throw<ArgumentNullException>(() => DB.Update("tableName", "primaryKeyName", null, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, "primaryKeyName", new Person(), null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", null, new Person(), null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update("tableName", "primaryKeyName", null, null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, (object) null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, (object) null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update(null, (object) null, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update(null, (object) null, null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update<Person>((string) null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update<Person>((string) null));
 
-            Should.Throw<ArgumentNullException>(() => DB.Update<Person>((Sql) null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Update<Person>((Sql) null));
         }
 
         [Fact]
         public void Insert_GivenInvalidArguments_ShouldThrow()
         {
-            Should.Throw<ArgumentNullException>(() => DB.Insert(null));
-            Should.Throw<ArgumentNullException>(() => DB.Insert(null, null));
-            Should.Throw<ArgumentNullException>(() => DB.Insert(null, "SomeColumn", new Person()));
-            Should.Throw<ArgumentNullException>(() => DB.Insert("SomeTable", null, new Person()));
-            Should.Throw<ArgumentNullException>(() => DB.Insert("SomeTable", "SomeColumn", null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Insert(null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Insert(null, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.Insert(null, "SomeColumn", new Person()));
+            Should.Throw<ArgumentNullException>(() => dataBase.Insert("SomeTable", null, new Person()));
+            Should.Throw<ArgumentNullException>(() => dataBase.Insert("SomeTable", "SomeColumn", null));
         }
 
         [Fact]
         public void IsNew_GivenInvalidArguments_ShouldThrow()
         {
-            Should.Throw<ArgumentNullException>(() => DB.IsNew(null));
-            Should.Throw<ArgumentNullException>(() => DB.IsNew(null, null));
+            Should.Throw<ArgumentNullException>(() => dataBase.IsNew(null));
+            Should.Throw<ArgumentNullException>(() => dataBase.IsNew(null, null));
 
-            Should.Throw<ArgumentException>(() => DB.IsNew("MissingId", new { }));
+            Should.Throw<ArgumentException>(() => dataBase.IsNew("MissingId", new { }));
 
-            Should.Throw<InvalidOperationException>(() => DB.IsNew(new TransactionLog()));
-            Should.Throw<InvalidOperationException>(() => DB.IsNew(new EntityWithoutConventionId()));
-            Should.Throw<InvalidOperationException>(() => DB.IsNew(new ExpandoObject()));
+            Should.Throw<InvalidOperationException>(() => dataBase.IsNew(new TransactionLog()));
+            Should.Throw<InvalidOperationException>(() => dataBase.IsNew(new EntityWithoutConventionId()));
+            Should.Throw<InvalidOperationException>(() => dataBase.IsNew(new ExpandoObject()));
         }
 
         [Fact]
         public void IsNew_GivenTransientEntity_ShoudlBeTrue()
         {
-            DB.IsNew(new GenericIdEntity<Guid>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<Guid?>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<int>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<uint>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<short>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<ushort>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<long>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<ulong>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<string>()).ShouldBeTrue();
-            DB.IsNew(new GenericIdEntity<ComplexPrimaryKey>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<Guid>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<Guid?>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<int>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<uint>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<short>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<ushort>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<long>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<ulong>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<string>()).ShouldBeTrue();
+            dataBase.IsNew(new GenericIdEntity<ComplexPrimaryKey>()).ShouldBeTrue();
         }
 
         [Fact]
         public void IsNew_GivenNonTransientEntity_ShouldBeFalse()
         {
-            DB.IsNew(new GenericIdEntity<Guid> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<Guid?> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<int> { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<uint> { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<short>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<ushort>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<long>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<ulong>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<string>() { Id = "ID-1" }).ShouldBeFalse();
-            DB.IsNew(new GenericIdEntity<ComplexPrimaryKey> { Id = new ComplexPrimaryKey() }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<Guid> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<Guid?> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<int> { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<uint> { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<short>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<ushort>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<long>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<ulong>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<string>() { Id = "ID-1" }).ShouldBeFalse();
+            dataBase.IsNew(new GenericIdEntity<ComplexPrimaryKey> { Id = new ComplexPrimaryKey() }).ShouldBeFalse();
         }
 
         [Fact]
         public void IsNew_GivenTransientEntityAndPrimaryKeyName_ShouldBeTrue()
         {
-            DB.IsNew("Id", new GenericNoMapsIdEntity<Guid>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<Guid?>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<int>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<uint>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<short>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<ushort>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<long>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<ulong>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<string>()).ShouldBeTrue();
-            DB.IsNew("Id", new GenericNoMapsIdEntity<ComplexPrimaryKey>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<Guid>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<Guid?>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<int>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<uint>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<short>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<ushort>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<long>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<ulong>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<string>()).ShouldBeTrue();
+            dataBase.IsNew("Id", new GenericNoMapsIdEntity<ComplexPrimaryKey>()).ShouldBeTrue();
         }
 
         [Fact]
         public void IsNew_GivenNonTransientEntityAndPrimaryKeyName_ShouldBeFalse()
         {
-            DB.IsNew("id", new GenericNoMapsIdEntity<Guid> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<Guid?> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<int> { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<uint> { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<short>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<ushort>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<long>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<ulong>() { Id = 1 }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<string>() { Id = "ID-1" }).ShouldBeFalse();
-            DB.IsNew("id", new GenericNoMapsIdEntity<ComplexPrimaryKey> { Id = new ComplexPrimaryKey() }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<Guid> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<Guid?> { Id = Guid.Parse("803A25C4-65D9-4F92-9305-0854FD134841") }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<int> { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<uint> { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<short>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<ushort>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<long>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<ulong>() { Id = 1 }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<string>() { Id = "ID-1" }).ShouldBeFalse();
+            dataBase.IsNew("id", new GenericNoMapsIdEntity<ComplexPrimaryKey> { Id = new ComplexPrimaryKey() }).ShouldBeFalse();
         }
 
         [ExplicitColumns]
         [TableName("Orders")]
         [PrimaryKey("Id")]
-        public class GenericIdEntity<T>
+        private class GenericIdEntity<T>
         {
             [Column]
             public T Id { get; set; }
         }
 
-        public class GenericNoMapsIdEntity<T>
+        private class GenericNoMapsIdEntity<T>
         {
             public T Id { get; set; }
         }
 
-        public class ComplexPrimaryKey
+        private class ComplexPrimaryKey
         {
         }
 
-        public class EntityWithoutConventionId
+        private class EntityWithoutConventionId
         {
             public int SomeOtherId { get; set; }
 
@@ -227,7 +230,7 @@ namespace PetaPoco.Tests.Unit
             public string Text { get; set; }
         }
 
-        public class DbProviderWrapper : DbProviderFactory, IServiceProvider
+        private class DbProviderWrapper : DbProviderFactory, IServiceProvider
         {
             public object GetService(Type serviceType)
             {
