@@ -62,29 +62,10 @@ namespace PetaPoco.Tests.Unit
             Should.Throw<InvalidOperationException>(() =>
             {
                 DatabaseConfiguration.Build().Create();
-
-                //try
-                //{
-
-                //}
-                //catch (Exception e)
-                //{
-                //    e.Message.ShouldContain("One or more connection strings");
-                //    throw;
-                //}
             });
             Should.Throw<InvalidOperationException>(() =>
             {
                 DatabaseConfiguration.Build().UsingConnectionString("connection string").Create();
-
-                //try
-                //{
-                //}
-                //catch (Exception e)
-                //{
-                //    e.Message.ShouldContain("Both a connection string and provider are required");
-                //    throw;
-                //}
             });
         }
 
