@@ -59,13 +59,10 @@ namespace PetaPoco.Tests.Unit
             Should.Throw<ArgumentNullException>(() => new Database("some connection string", (DbProviderFactory) null));
 
             Should.Throw<ArgumentNullException>(() => new Database((IDatabaseBuildConfiguration) null));
+            Should.Throw<InvalidOperationException>(() =>{DatabaseConfiguration.Build().Create();});
             Should.Throw<InvalidOperationException>(() =>
             {
-                DatabaseConfiguration.Build().Create();
-            });
-            Should.Throw<InvalidOperationException>(() =>
-            {
-                DatabaseConfiguration.Build().UsingConnectionString("connection string").Create();
+                DatabaseConfiguration.Build().UsingConnectionString("some connection string").Create();
             });
         }
 
