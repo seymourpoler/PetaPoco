@@ -1457,10 +1457,10 @@ namespace PetaPoco
         /// <returns>The number of affected rows</returns>
         public int Update(string tableName, string primaryKeyName, object poco, IEnumerable<string> columns)
         {
-            if (string.IsNullOrEmpty(tableName))
+            if (String.IsNullOrEmpty(tableName))
                 throw new ArgumentNullException("tableName");
 
-            if (string.IsNullOrEmpty(primaryKeyName))
+            if (String.IsNullOrEmpty(primaryKeyName))
                 throw new ArgumentNullException("primaryKeyName");
 
             if (poco == null)
