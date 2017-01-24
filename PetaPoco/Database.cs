@@ -1526,7 +1526,7 @@ namespace PetaPoco
         /// <returns>The number of affected rows</returns>
         public int Update<T>(string sql, params object[] args)
         {
-            if (string.IsNullOrEmpty(sql))
+            if (String.IsNullOrEmpty(sql))
                 throw new ArgumentNullException("sql");
 
             var pd = PocoData.ForType(typeof(T), _defaultMapper);
