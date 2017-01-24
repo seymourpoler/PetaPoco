@@ -222,3 +222,13 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+#ncrunch v2
+PetaPoco.Cs.Joiner/PetaPoco.Cs.Joiner.v2.ncrunchproject
+PetaPoco.Tests.Dep/PetaPoco.Tests.Dep.v2.ncrunchproject
+PetaPoco.Tests.Integration.SingleFile/PetaPoco.Tests.Integration.SingleFile.v2.ncrunchproject
+PetaPoco.Tests.Integration.x86/PetaPoco.Tests.Integration.x86.v2.ncrunchproject
+PetaPoco.Tests.Integration/PetaPoco.Tests.Integration.v2.ncrunchproject
+PetaPoco.Tests.Unit/PetaPoco.Tests.Unit.v2.ncrunchproject
+PetaPoco.v2.ncrunchsolution
+PetaPoco/PetaPoco.v2.ncrunchsolution
