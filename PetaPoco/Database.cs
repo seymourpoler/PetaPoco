@@ -1513,8 +1513,8 @@ namespace PetaPoco
             if (poco == null)
                 throw new ArgumentNullException("poco");
 
-            var pd = PocoData.ForType(poco.GetType(), _defaultMapper);
-            return ExecuteUpdate(pd.TableInfo.TableName, pd.TableInfo.PrimaryKey, poco, primaryKeyValue, columns);
+            var pocoData = PocoData.ForType(poco.GetType(), _defaultMapper);
+            return ExecuteUpdate(pocoData.TableInfo.TableName, pocoData.TableInfo.PrimaryKey, poco, primaryKeyValue, columns);
         }
 
         /// <summary>
