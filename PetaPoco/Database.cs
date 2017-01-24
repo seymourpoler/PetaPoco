@@ -1529,8 +1529,8 @@ namespace PetaPoco
             if (String.IsNullOrEmpty(sql))
                 throw new ArgumentNullException("sql");
 
-            var pd = PocoData.ForType(typeof(T), _defaultMapper);
-            return Execute(string.Format("UPDATE {0} {1}", _provider.EscapeTableName(pd.TableInfo.TableName), sql), args);
+            var pocoData = PocoData.ForType(typeof(T), _defaultMapper);
+            return Execute(string.Format("UPDATE {0} {1}", _provider.EscapeTableName(pocoData.TableInfo.TableName), sql), args);
         }
 
         /// <summary>
@@ -1547,8 +1547,8 @@ namespace PetaPoco
             if (sql == null)
                 throw new ArgumentNullException("sql");
 
-            var pd = PocoData.ForType(typeof(T), _defaultMapper);
-            return Execute(new Sql(string.Format("UPDATE {0}", _provider.EscapeTableName(pd.TableInfo.TableName))).Append(sql));
+            var pocoData = PocoData.ForType(typeof(T), _defaultMapper);
+            return Execute(new Sql(string.Format("UPDATE {0}", _provider.EscapeTableName(pocoData.TableInfo.TableName))).Append(sql));
         }
 
         private int ExecuteUpdate(string tableName, string primaryKeyName, object poco, object primaryKeyValue, IEnumerable<string> columns)
