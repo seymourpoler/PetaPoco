@@ -291,16 +291,20 @@ namespace PetaPoco
         /// </summary>
         public void CloseSharedConnection()
         {
-            if (_sharedConnectionDepth > 0)
+            if (_sharedConnectionDepth <= 0)
             {
-                _sharedConnectionDepth--;
-                if (_sharedConnectionDepth == 0)
-                {
-                    OnConnectionClosing(_sharedConnection);
-                    _sharedConnection.Dispose();
-                    _sharedConnection = null;
-                }
+                return;
             }
+                
+            _sharedConnectionDepth--;
+            if (_sharedConnectionDepth <= 0)
+            {
+                return;
+            }
+
+            OnConnectionClosing(_sharedConnection);
+            _sharedConnection.Dispose();
+            _sharedConnection = null;
         }
 
         /// <summary>
