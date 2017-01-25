@@ -55,20 +55,20 @@ namespace PetaPoco.Core
             Columns = new Dictionary<string, PocoColumn>(StringComparer.OrdinalIgnoreCase);
             foreach (var pi in type.GetProperties(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
             {
-                ColumnInfo ci = mapper.GetColumnInfo(pi);
-                if (ci == null)
+                ColumnInfo columnInfo = mapper.GetColumnInfo(pi);
+                if (columnInfo == null)
                     continue;
 
-                var pc = new PocoColumn();
-                pc.PropertyInfo = pi;
-                pc.ColumnName = ci.ColumnName;
-                pc.ResultColumn = ci.ResultColumn;
-                pc.ForceToUtc = ci.ForceToUtc;
-                pc.InsertTemplate = ci.InsertTemplate;
-                pc.UpdateTemplate = ci.UpdateTemplate;
+                var pocoColumn = new PocoColumn();
+                pocoColumn.PropertyInfo = pi;
+                pocoColumn.ColumnName = columnInfo.ColumnName;
+                pocoColumn.ResultColumn = columnInfo.ResultColumn;
+                pocoColumn.ForceToUtc = columnInfo.ForceToUtc;
+                pocoColumn.InsertTemplate = columnInfo.InsertTemplate;
+                pocoColumn.UpdateTemplate = columnInfo.UpdateTemplate;
 
                 // Store it
-                Columns.Add(pc.ColumnName, pc);
+                Columns.Add(pocoColumn.ColumnName, pocoColumn);
             }
 
             // Build column list for automatic select
@@ -77,8 +77,8 @@ namespace PetaPoco.Core
 
         public static PocoData ForObject(object obj, string primaryKeyName, IMapper defaultMapper)
         {
-            var t = obj.GetType();
-            if (t == typeof(System.Dynamic.ExpandoObject))
+            var type = obj.GetType();
+            if (type == typeof(System.Dynamic.ExpandoObject))
             {
                 var pd = new PocoData();
                 pd.TableInfo = new TableInfo();
@@ -93,7 +93,7 @@ namespace PetaPoco.Core
                 }
                 return pd;
             }
-            return ForType(t, defaultMapper);
+            return ForType(type, defaultMapper);
         }
 
         public static PocoData ForType(Type type, IMapper defaultMapper)
