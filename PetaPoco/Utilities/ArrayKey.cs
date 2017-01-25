@@ -8,7 +8,7 @@ namespace PetaPoco.Utilities
 {
     internal class ArrayKey<T>
     {
-        private int _hashCode;
+        private readonly int _hashCode;
 
         private T[] _keys;
 
