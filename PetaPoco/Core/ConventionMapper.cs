@@ -7,9 +7,10 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using PetaPoco.Attributes;
 using PetaPoco.Core.Inflection;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Represents a configurable convention mapper.

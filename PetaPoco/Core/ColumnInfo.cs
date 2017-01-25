@@ -5,8 +5,9 @@
 // <date>2016/07/30</date>
 
 using System.Reflection;
+using PetaPoco.Attributes;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Hold information about a column in the database.

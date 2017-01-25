@@ -4,6 +4,8 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2015/12/27</date>
 
+using PetaPoco.Core;
+
 namespace PetaPoco.Tests.Unit.Core
 {
     public class ConventionMapperRegressionTests : StandardMapperTests

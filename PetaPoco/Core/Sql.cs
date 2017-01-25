@@ -8,10 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PetaPoco.Internal;
 using PetaPoco.Utilities;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     A simple helper class for building SQL statements

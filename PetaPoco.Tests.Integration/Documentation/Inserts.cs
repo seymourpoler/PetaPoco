@@ -6,6 +6,7 @@
 
 using System;
 using System.Linq;
+using PetaPoco.Attributes;
 using PetaPoco.Core;
 using PetaPoco.Core.Inflection;
 using PetaPoco.Tests.Integration.Databases;

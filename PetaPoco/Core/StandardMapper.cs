@@ -7,7 +7,7 @@
 using System;
 using System.Reflection;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     StandardMapper is the default implementation of IMapper used by PetaPoco

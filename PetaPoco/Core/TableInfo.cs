@@ -6,8 +6,9 @@
 
 using System;
 using System.Linq;
+using PetaPoco.Attributes;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Use by IMapper to override table bindings for an object

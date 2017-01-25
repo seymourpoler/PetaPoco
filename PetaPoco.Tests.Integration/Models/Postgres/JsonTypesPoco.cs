@@ -5,6 +5,7 @@
 // <date>2016/07/30</date>
 
 using Newtonsoft.Json.Linq;
+using PetaPoco.Attributes;
 using Shouldly;
 
 namespace PetaPoco.Tests.Integration.Models.Postgres

@@ -5,6 +5,7 @@
 // <date>2016/01/20</date>
 
 using System;
+using PetaPoco.Core;
 using PetaPoco.Tests.Integration.Models;
 using Shouldly;
 using Xunit;

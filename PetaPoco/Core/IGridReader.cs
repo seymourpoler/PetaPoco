@@ -3,10 +3,11 @@
 // </copyright>
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2016/03/23</date>
+
 using System;
 using System.Collections.Generic;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     public interface IGridReader : IDisposable
     {

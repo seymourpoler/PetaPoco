@@ -4,7 +4,7 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2016/01/24</date>
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Transaction object helps maintain transaction depth counts

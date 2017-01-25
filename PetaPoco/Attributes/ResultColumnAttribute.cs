@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Attributes
 {
     /// <summary>
     ///     Represents an attribute which can decorate a poco property as a result only column. A result only column is a

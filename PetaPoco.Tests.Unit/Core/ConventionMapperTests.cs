@@ -5,6 +5,8 @@
 // <date>2015/12/27</date>
 
 using System;
+using PetaPoco.Attributes;
+using PetaPoco.Core;
 using Shouldly;
 using Xunit;
 

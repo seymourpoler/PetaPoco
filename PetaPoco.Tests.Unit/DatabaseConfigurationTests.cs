@@ -6,6 +6,7 @@
 
 using System;
 using System.Data;
+using PetaPoco.Core;
 using PetaPoco.Providers;
 using Shouldly;
 using Xunit;

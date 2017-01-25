@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Attributes
 {
     /// <summary>
     ///     Represents an attribute, which when applied to a Poco class, specifies the the DB table name which it maps to

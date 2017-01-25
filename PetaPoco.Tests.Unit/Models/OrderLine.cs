@@ -4,6 +4,7 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2015/12/07</date>
 
+using PetaPoco.Attributes;
 using Shouldly;
 
 namespace PetaPoco.Tests.Unit.Models

@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using PetaPoco.Attributes;
 using PetaPoco.Core;
 using PetaPoco.Tests.Integration.Models;
 using Shouldly;

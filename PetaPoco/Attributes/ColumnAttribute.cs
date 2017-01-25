@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Attributes
 {
     /// <summary>
     ///     Represents an attribute which can decorate a Poco property to mark the property as a column. It may also optionally

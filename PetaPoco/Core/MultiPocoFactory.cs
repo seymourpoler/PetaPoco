@@ -10,10 +10,9 @@ using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection.Emit;
-using PetaPoco.Core;
 using PetaPoco.Utilities;
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Core
 {
     internal class MultiPocoFactory
     {

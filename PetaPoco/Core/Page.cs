@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Holds the results of a paged request.

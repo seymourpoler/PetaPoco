@@ -6,6 +6,8 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using PetaPoco.Attributes;
+using PetaPoco.Core;
 using Shouldly;
 using Xunit;
 

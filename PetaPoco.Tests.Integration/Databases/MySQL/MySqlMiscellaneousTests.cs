@@ -4,6 +4,7 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2016/03/07</date>
 
+using PetaPoco.Attributes;
 using Shouldly;
 using Xunit;
 

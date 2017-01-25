@@ -4,7 +4,7 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2015/12/05</date>
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Wrap strings in an instance of this class to force use of DBType.AnsiString

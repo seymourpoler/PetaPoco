@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Attributes
 {
     /// <summary>
     ///     Represents an attribute which can decorate a Poco property to ensure PetaPoco does not map column, and therefore

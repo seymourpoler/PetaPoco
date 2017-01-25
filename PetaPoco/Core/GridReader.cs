@@ -3,14 +3,13 @@
 // </copyright>
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2016/03/16</date>
+
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using PetaPoco.Core;
-using PetaPoco.Internal;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     public class GridReader : IGridReader
     {

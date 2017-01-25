@@ -7,7 +7,7 @@
 using System;
 using System.Reflection;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     IMapper provides a way to hook into PetaPoco's Database to POCO mapping mechanism to either

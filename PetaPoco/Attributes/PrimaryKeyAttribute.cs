@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Attributes
 {
     /// <summary>
     ///     Is an attribute, which when applied to a Poco class, specifies primary key column. Additionally, specifies whether

@@ -9,10 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using PetaPoco.Core;
-using PetaPoco.Internal;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     This static manages registation of IMapper instances with PetaPoco

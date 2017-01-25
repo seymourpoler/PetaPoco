@@ -5,6 +5,7 @@
 // <date>2015/12/07</date>
 
 using System;
+using PetaPoco.Attributes;
 using Shouldly;
 
 namespace PetaPoco.Tests.Unit.Models

@@ -10,6 +10,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Dynamic;
 using Moq;
+using PetaPoco.Attributes;
 using PetaPoco.Core;
 using PetaPoco.Tests.Unit.Models;
 using Shouldly;

@@ -4,6 +4,8 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2015/12/12</date>
 
+using PetaPoco.Core;
+
 namespace PetaPoco
 {
     public interface IExecute

@@ -6,6 +6,7 @@
 
 using System;
 using System.Linq;
+using PetaPoco.Core;
 
 namespace PetaPoco.Tests.Integration.Databases.Sqlite
 {

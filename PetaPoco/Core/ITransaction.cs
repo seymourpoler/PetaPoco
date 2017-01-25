@@ -6,7 +6,7 @@
 
 using System;
 
-namespace PetaPoco
+namespace PetaPoco.Core
 {
     /// <summary>
     ///     Represents the contract for the transaction.

@@ -8,7 +8,6 @@ using System;
 using System.Data;
 using System.Data.Common;
 using PetaPoco.Core;
-using PetaPoco.Internal;
 using PetaPoco.Utilities;
 
 namespace PetaPoco.Providers

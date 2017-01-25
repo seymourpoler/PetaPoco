@@ -15,7 +15,6 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using PetaPoco.Core;
-using PetaPoco.Internal;
 using PetaPoco.Utilities;
 
 namespace PetaPoco
