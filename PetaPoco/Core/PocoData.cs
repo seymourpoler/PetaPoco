@@ -106,8 +106,8 @@ namespace PetaPoco.Core
 
         private static bool IsIntegralType(Type type)
         {
-            var tc = Type.GetTypeCode(type);
-            return tc >= TypeCode.SByte && tc <= TypeCode.UInt64;
+            var typeCode = Type.GetTypeCode(type);
+            return typeCode >= TypeCode.SByte && typeCode <= TypeCode.UInt64;
         }
 
         // Create factory function that can convert a IDataReader record into a POCO
