@@ -80,18 +80,18 @@ namespace PetaPoco.Core
             var type = obj.GetType();
             if (type == typeof(System.Dynamic.ExpandoObject))
             {
-                var pd = new PocoData();
-                pd.TableInfo = new TableInfo();
-                pd.Columns = new Dictionary<string, PocoColumn>(StringComparer.OrdinalIgnoreCase);
-                pd.Columns.Add(primaryKeyName, new ExpandoColumn() {ColumnName = primaryKeyName});
-                pd.TableInfo.PrimaryKey = primaryKeyName;
-                pd.TableInfo.AutoIncrement = true;
+                var pocoData = new PocoData();
+                pocoData.TableInfo = new TableInfo();
+                pocoData.Columns = new Dictionary<string, PocoColumn>(StringComparer.OrdinalIgnoreCase);
+                pocoData.Columns.Add(primaryKeyName, new ExpandoColumn() {ColumnName = primaryKeyName});
+                pocoData.TableInfo.PrimaryKey = primaryKeyName;
+                pocoData.TableInfo.AutoIncrement = true;
                 foreach (var col in (obj as IDictionary<string, object>).Keys)
                 {
                     if (col != primaryKeyName)
-                        pd.Columns.Add(col, new ExpandoColumn() {ColumnName = col});
+                        pocoData.Columns.Add(col, new ExpandoColumn() {ColumnName = col});
                 }
-                return pd;
+                return pocoData;
             }
             return ForType(type, defaultMapper);
         }

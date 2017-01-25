@@ -5,9 +5,8 @@
 // <date>2015/12/05</date>
 
 using System.Collections.Generic;
-using PetaPoco.Core;
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Core
 {
     internal class ExpandoColumn : PocoColumn
     {
