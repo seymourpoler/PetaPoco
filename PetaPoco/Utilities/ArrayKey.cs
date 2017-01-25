@@ -16,13 +16,7 @@ namespace PetaPoco.Utilities
         {
             // Store the keys
             _keys = keys;
-
-            // Calculate the hashcode
-            _hashCode = 17;
-            foreach (var k in keys)
-            {
-                _hashCode = _hashCode*23 + (k == null ? 0 : k.GetHashCode());
-            }
+            _hashCode = HashCodeGenerator.Generate(keys);
         }
 
         private bool Equals(ArrayKey<T> other)

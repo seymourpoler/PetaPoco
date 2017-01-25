@@ -85,6 +85,7 @@
     <Compile Include="IQuery.cs" />
     <Compile Include="Utilities\AutoSelectHelper.cs" />
     <Compile Include="Utilities\ConnectionStringSettingsCollectionExtensions.cs" />
+    <Compile Include="Utilities\HashCodeGenerator.cs" />
     <Compile Include="Utilities\IPagingHelper.cs" />
     <Compile Include="Utilities\PagingHelper.cs" />
     <Compile Include="Utilities\ParametersHelper.cs" />
