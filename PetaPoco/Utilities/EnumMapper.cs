@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Utilities
 {
     internal static class EnumMapper
     {

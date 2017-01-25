@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Utilities
 {
     internal static class ParametersHelper
     {

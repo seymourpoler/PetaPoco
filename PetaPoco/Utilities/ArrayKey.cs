@@ -4,7 +4,7 @@
 // <author>PetaPoco - CollaboratingPlatypus</author>
 // <date>2015/12/05</date>
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Utilities
 {
     internal class ArrayKey<T>
     {

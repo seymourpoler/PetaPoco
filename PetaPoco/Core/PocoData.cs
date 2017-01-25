@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using PetaPoco.Internal;
+using PetaPoco.Utilities;
 
 namespace PetaPoco.Core
 {

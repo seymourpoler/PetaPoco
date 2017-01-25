@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using PetaPoco.Core;
 
-namespace PetaPoco.Internal
+namespace PetaPoco.Utilities
 {
     internal static class AutoSelectHelper
     {
