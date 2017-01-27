@@ -66,11 +66,8 @@ namespace PetaPoco.Providers
                 db.ExecuteNonQueryHelper(cmd);
                 return param.Value;
             }
-            else
-            {
-                db.ExecuteNonQueryHelper(cmd);
-                return -1;
-            }
+            db.ExecuteNonQueryHelper(cmd);
+            return -1;
         }
     }
 }
