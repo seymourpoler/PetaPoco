@@ -41,13 +41,13 @@ namespace PetaPoco.Providers
 
         public override string EscapeSqlIdentifier(string sqlIdentifier)
         {
-            return string.Format("\"{0}\"", sqlIdentifier.ToUpperInvariant());
+            return String.Format("\"{0}\"", sqlIdentifier.ToUpperInvariant());
         }
 
         public override string GetAutoIncrementExpression(TableInfo ti)
         {
-            if (!string.IsNullOrEmpty(ti.SequenceName))
-                return string.Format("{0}.nextval", ti.SequenceName);
+            if (!String.IsNullOrEmpty(ti.SequenceName))
+                return String.Format("{0}.nextval", ti.SequenceName);
 
             return null;
         }
@@ -56,7 +56,7 @@ namespace PetaPoco.Providers
         {
             if (primaryKeyName != null)
             {
-                cmd.CommandText += string.Format(" returning {0} into :newid", EscapeSqlIdentifier(primaryKeyName));
+                cmd.CommandText += String.Format(" returning {0} into :newid", EscapeSqlIdentifier(primaryKeyName));
                 var param = cmd.CreateParameter();
                 param.ParameterName = ":newid";
                 param.Value = DBNull.Value;
