@@ -54,20 +54,20 @@ namespace PetaPoco.Providers
 
         public override object ExecuteInsert(Database db, IDbCommand cmd, string primaryKeyName)
         {
-            if (primaryKeyName != null)
+            if (primaryKeyName == null)
             {
-                cmd.CommandText += String.Format(" returning {0} into :newid", EscapeSqlIdentifier(primaryKeyName));
-                var param = cmd.CreateParameter();
-                param.ParameterName = ":newid";
-                param.Value = DBNull.Value;
-                param.Direction = ParameterDirection.ReturnValue;
-                param.DbType = DbType.Int64;
-                cmd.Parameters.Add(param);
                 db.ExecuteNonQueryHelper(cmd);
-                return param.Value;
+                return -1;
             }
+            cmd.CommandText += String.Format(" returning {0} into :newid", EscapeSqlIdentifier(primaryKeyName));
+            var param = cmd.CreateParameter();
+            param.ParameterName = ":newid";
+            param.Value = DBNull.Value;
+            param.Direction = ParameterDirection.ReturnValue;
+            param.DbType = DbType.Int64;
+            cmd.Parameters.Add(param);
             db.ExecuteNonQueryHelper(cmd);
-            return -1;
+            return param.Value;
         }
     }
 }
