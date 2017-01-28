@@ -53,7 +53,7 @@ namespace PetaPoco
 
             var entry = ConfigurationManager.ConnectionStrings[0];
             _connectionString = entry.ConnectionString;
-            var providerName = !string.IsNullOrEmpty(entry.ProviderName) ? entry.ProviderName : "System.Data.SqlClient";
+            var providerName = !String.IsNullOrEmpty(entry.ProviderName) ? entry.ProviderName : "System.Data.SqlClient";
             Initialise(DatabaseProvider.Resolve(providerName, false, _connectionString), null);
         }
 
@@ -124,7 +124,9 @@ namespace PetaPoco
                 throw new ArgumentNullException("factory");
 
             _connectionString = connectionString;
-            Initialise(DatabaseProvider.Resolve(DatabaseProvider.Unwrap(factory).GetType(), false, _connectionString), null);
+            Initialise(
+                provider: DatabaseProvider.Resolve(DatabaseProvider.Unwrap(factory).GetType(), false, _connectionString),
+                mapper: null);
         }
 
         /// <summary>
@@ -142,10 +144,10 @@ namespace PetaPoco
             var entry = ConfigurationManager.ConnectionStrings[connectionStringName];
 
             if (entry == null)
-                throw new InvalidOperationException(string.Format("Can't find a connection string with the name '{0}'", connectionStringName));
+                throw new InvalidOperationException(String.Format("Can't find a connection string with the name '{0}'", connectionStringName));
 
             _connectionString = entry.ConnectionString;
-            var providerName = !string.IsNullOrEmpty(entry.ProviderName) ? entry.ProviderName : "System.Data.SqlClient";
+            var providerName = !String.IsNullOrEmpty(entry.ProviderName) ? entry.ProviderName : "System.Data.SqlClient";
             Initialise(DatabaseProvider.Resolve(providerName, false, _connectionString), null);
         }
 
