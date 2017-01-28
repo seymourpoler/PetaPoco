@@ -28,7 +28,9 @@ namespace PetaPoco.Tests.Unit
             ((IBuildConfigurationSettings) config).SetSetting("key", "value");
 
             string value = null;
+
             ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => value = v);
+
             value.ShouldNotBeNull();
             value.ShouldBe("value");
         }
@@ -38,9 +40,10 @@ namespace PetaPoco.Tests.Unit
         {
             ((IBuildConfigurationSettings) config).SetSetting("key", "value");
             ((IBuildConfigurationSettings) config).SetSetting("key", null);
-
             var getCalled = false;
+
             ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => { getCalled = true; });
+
             getCalled.ShouldBeFalse();
         }
 
@@ -48,9 +51,10 @@ namespace PetaPoco.Tests.Unit
         public void TryGetSetting_GivenKeyAndValue_ShouldGetSetting()
         {
             ((IBuildConfigurationSettings) config).SetSetting("key", "value");
-
             string value = null;
+
             ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => value = v);
+
             value.ShouldNotBeNull();
             value.ShouldBe("value");
         }
@@ -59,7 +63,9 @@ namespace PetaPoco.Tests.Unit
         public void TryGetSetting_GivenKeyThatDoesNotMatchValue_ShouldNotCallback()
         {
             var getCalled = false;
+
             ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => { getCalled = true; });
+
             getCalled.ShouldBeFalse();
         }
 
@@ -79,6 +85,7 @@ namespace PetaPoco.Tests.Unit
         public void TryGetSetting_GivenNullCallback_Throws()
         {
             ((IBuildConfigurationSettings) config).SetSetting("key", "value");
+
             Should.Throw<NullReferenceException>(() => ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", null));
         }
 
