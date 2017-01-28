@@ -148,7 +148,9 @@ namespace PetaPoco
 
             _connectionString = entry.ConnectionString;
             var providerName = !String.IsNullOrEmpty(entry.ProviderName) ? entry.ProviderName : "System.Data.SqlClient";
-            Initialise(DatabaseProvider.Resolve(providerName, false, _connectionString), null);
+            Initialise(
+                provider: DatabaseProvider.Resolve(providerName, false, _connectionString),
+                mapper: null);
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace PetaPoco
                 throw new ArgumentNullException("provider");
 
             _connectionString = connectionString;
-            Initialise(provider, defaultMapper);
+            Initialise(provider: provider, mapper: defaultMapper);
         }
 
         /// <summary>
