@@ -184,7 +184,7 @@ namespace PetaPoco
             var settings = configuration as IBuildConfigurationSettings;
 
             IMapper defaultMapper = null;
-            settings.TryGetSetting<IMapper>(key: DatabaseConfigurationExtensions.DefaultMapper, setSetting:v => defaultMapper = v);
+            settings.TryGetSetting<IMapper>(key: DatabaseConfigurationExtensions.DefaultMapper, setSetting: v => defaultMapper = v);
 
             ConnectionStringSettings entry = null;
             settings.TryGetSetting<string>(
