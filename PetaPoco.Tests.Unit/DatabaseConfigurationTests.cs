@@ -16,7 +16,7 @@ namespace PetaPoco.Tests.Unit
     public class DatabaseConfigurationTests
     {
         private readonly IDatabaseBuildConfiguration config;
-        private const string connectionString = "connectionString";
+        private const string connectionString = "ConnectionString";
 
         public DatabaseConfigurationTests()
         {
