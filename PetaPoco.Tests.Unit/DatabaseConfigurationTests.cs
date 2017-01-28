@@ -16,7 +16,7 @@ namespace PetaPoco.Tests.Unit
     public class DatabaseConfigurationTests
     {
         private readonly IDatabaseBuildConfiguration config;
-        private const string connectionString = "ConnectionString";
+        private const string ConnectionString = "ConnectionString";
 
         public DatabaseConfigurationTests()
         {
@@ -94,13 +94,13 @@ namespace PetaPoco.Tests.Unit
         public void UsingCreate_GivenMinimalConfiguration_ShouldNotAffectPetaPoocDefaults()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .Create();
 
             db.CommandTimeout.ShouldBe(0);
             db.Provider.ShouldBeOfType<SqlServerDatabaseProvider>();
-            db.ConnectionString.ShouldBe(connectionString);
+            db.ConnectionString.ShouldBe(ConnectionString);
             db.DefaultMapper.ShouldBeOfType<ConventionMapper>();
             db.EnableAutoSelect.ShouldBeTrue();
             db.EnableNamedParams.ShouldBeTrue();
@@ -117,7 +117,7 @@ namespace PetaPoco.Tests.Unit
         public void UsingCommandTimeout_GivenTimeoutAndAfterCreate_ShouldBeSameAsPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingCommandTimeout(50)
                 .Create();
@@ -129,7 +129,7 @@ namespace PetaPoco.Tests.Unit
         public void WithNamedParams_AfterCreate_ShouldBeSetOnPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .WithNamedParams()
                 .Create();
@@ -141,7 +141,7 @@ namespace PetaPoco.Tests.Unit
         public void WithoutNamedParams_AfterCreate_ShouldNotBeSetOnPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .WithoutNamedParams()
                 .Create();
@@ -153,7 +153,7 @@ namespace PetaPoco.Tests.Unit
         public void WithAutoSelect_AfterCreate_ShouldBeSetOnPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .WithAutoSelect()
                 .Create();
@@ -165,7 +165,7 @@ namespace PetaPoco.Tests.Unit
         public void WithoutAutoSelect_AfterCreate_ShouldNotBeSetOnPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .WithoutAutoSelect()
                 .Create();
@@ -184,11 +184,11 @@ namespace PetaPoco.Tests.Unit
         public void UsingConnectionString_GivenTimeoutAndAfterCreate_ShouldBeSameAsPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .Create();
 
-            db.ConnectionString.ShouldBe(connectionString);
+            db.ConnectionString.ShouldBe(ConnectionString);
         }
 
         [Fact]
@@ -216,13 +216,13 @@ namespace PetaPoco.Tests.Unit
         public void UsingDefaultMapper_GivenMapperOrType_ShouldBeSameAsPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingDefaultMapper(new StandardMapper())
                 .Create();
 
             var db1 = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingDefaultMapper<StandardMapper>()
                 .Create();
@@ -236,14 +236,14 @@ namespace PetaPoco.Tests.Unit
         {
             var dbCalled = false;
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingDefaultMapper(new StandardMapper(), sm => dbCalled = true)
                 .Create();
 
             var db1Called = false;
             var db1 = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingDefaultMapper<StandardMapper>(sm => db1Called = true)
                 .Create();
@@ -258,7 +258,7 @@ namespace PetaPoco.Tests.Unit
         public void UsingIsolationLevel_GivenIsolationLevelAndAfterCreate_ShouldBeSameAsPetaPocoInstance()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .UsingIsolationLevel(IsolationLevel.Chaos)
                 .Create();
@@ -270,7 +270,7 @@ namespace PetaPoco.Tests.Unit
         public void NotUsingIsolationLevel_AfterCreate_PetaPocoInstanceShouldBeNull()
         {
             var db = config
-                .UsingConnectionString(connectionString)
+                .UsingConnectionString(ConnectionString)
                 .UsingProvider<SqlServerDatabaseProvider>()
                 .Create();
 
