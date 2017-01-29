@@ -26,11 +26,11 @@ namespace PetaPoco.Tests.Unit
         [Fact]
         public void SetSetting_GivenKeyAndValue_ShouldSetSetting()
         {
-            ((IBuildConfigurationSettings) config).SetSetting("key", "value");
+            ((IBuildConfigurationSettings)config).SetSetting(key: "key", value: "value");
 
             string value = null;
 
-            ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => value = v);
+            ((IBuildConfigurationSettings) config).TryGetSetting<string>(key: "key", setSetting: v => value = v);
 
             value.ShouldNotBeNull();
             value.ShouldBe("value");
@@ -43,7 +43,9 @@ namespace PetaPoco.Tests.Unit
             ((IBuildConfigurationSettings) config).SetSetting("key", null);
             var getCalled = false;
 
-            ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => { getCalled = true; });
+            ((IBuildConfigurationSettings)config).TryGetSetting<string>(
+                key: "key",
+                setSetting: v => { getCalled = true; });
 
             getCalled.ShouldBeFalse();
         }
@@ -51,13 +53,15 @@ namespace PetaPoco.Tests.Unit
         [Fact]
         public void TryGetSetting_GivenKeyAndValue_ShouldGetSetting()
         {
-            ((IBuildConfigurationSettings) config).SetSetting("key", "value");
-            string value = null;
+            string value = "value";
+            ((IBuildConfigurationSettings)config).SetSetting(key: "key", value: value);
 
-            ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => value = v);
+            ((IBuildConfigurationSettings)config).TryGetSetting<string>(
+                key: "key",
+                setSetting: v => value = v);
 
             value.ShouldNotBeNull();
-            value.ShouldBe("value");
+            value.ShouldBe(value);
         }
 
         [Fact]
@@ -65,7 +69,9 @@ namespace PetaPoco.Tests.Unit
         {
             var getCalled = false;
 
-            ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", v => { getCalled = true; });
+            ((IBuildConfigurationSettings)config).TryGetSetting<string>(
+                key: "key",
+                setSetting: v => { getCalled = true; });
 
             getCalled.ShouldBeFalse();
         }
@@ -73,13 +79,13 @@ namespace PetaPoco.Tests.Unit
         [Fact]
         public void TrySetSetting_GivenNullKey_Throws()
         {
-            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings) config).SetSetting(null, "value"));
+            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings)config).SetSetting(key: null, value: "value"));
         }
 
         [Fact]
         public void TryGetSetting_GivenNullKey_Throws()
         {
-            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings) config).TryGetSetting<string>(null, v => { }));
+            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings) config).TryGetSetting<string>(key: null, setSetting: v => { }));
         }
 
         [Fact]
@@ -87,7 +93,7 @@ namespace PetaPoco.Tests.Unit
         {
             ((IBuildConfigurationSettings) config).SetSetting("key", "value");
 
-            Should.Throw<NullReferenceException>(() => ((IBuildConfigurationSettings) config).TryGetSetting<string>("key", null));
+            Should.Throw<NullReferenceException>(() => ((IBuildConfigurationSettings)config).TryGetSetting<string>(key: "key", setSetting: null));
         }
 
         [Fact]
