@@ -172,7 +172,7 @@ namespace PetaPoco
         /// <returns>The configuration source to form a fluent interface.</returns>
         public static IDatabaseBuildConfiguration UsingConnectionString(this IDatabaseBuildConfiguration source, string connectionString)
         {
-            if (string.IsNullOrEmpty(connectionString))
+            if (String.IsNullOrEmpty(connectionString))
                 throw new ArgumentException("Argument is null or empty", "connectionString");
             source.SetSetting(ConnectionString, connectionString);
             return source;
@@ -187,7 +187,7 @@ namespace PetaPoco
         /// <returns>The configuration source to form a fluent interface.</returns>
         public static IDatabaseBuildConfiguration UsingConnectionStringName(this IDatabaseBuildConfiguration source, string connectionStringName)
         {
-            if (string.IsNullOrEmpty(connectionStringName))
+            if (String.IsNullOrEmpty(connectionStringName))
                 throw new ArgumentException("Argument is null or empty", "connectionStringName");
             source.SetSetting(ConnectionStringName, connectionStringName);
             return source;
