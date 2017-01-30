@@ -183,7 +183,7 @@ namespace PetaPoco.Tests.Unit
         public void UsingConnectionString_GivenInvalidArguments_Throws()
         {
             Should.Throw<ArgumentException>(() => config.UsingConnectionString(null));
-            Should.Throw<ArgumentException>(() => config.UsingConnectionString(string.Empty));
+            Should.Throw<ArgumentException>(() => config.UsingConnectionString(String.Empty));
         }
 
         [Fact]
