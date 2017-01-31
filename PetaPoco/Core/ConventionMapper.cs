@@ -136,19 +136,16 @@ namespace PetaPoco.Core
                     return false;
 
                 // Read attribute
-                if (column != null)
-                {
-                    ci.ColumnName = column.Name ?? InflectColumnName(Inflector.Instance, pi.Name);
-                    ci.ForceToUtc = column.ForceToUtc;
-                    ci.ResultColumn = (column as ResultColumnAttribute) != null;
-                    ci.InsertTemplate = column.InsertTemplate;
-                    ci.UpdateTemplate = column.UpdateTemplate;
-                }
-                else
+                if (column == null)
                 {
                     ci.ColumnName = InflectColumnName(Inflector.Instance, pi.Name);
+                    return true;
                 }
-
+                ci.ColumnName = column.Name ?? InflectColumnName(Inflector.Instance, pi.Name);
+                ci.ForceToUtc = column.ForceToUtc;
+                ci.ResultColumn = (column as ResultColumnAttribute) != null;
+                ci.InsertTemplate = column.InsertTemplate;
+                ci.UpdateTemplate = column.UpdateTemplate;
                 return true;
             };
         }
