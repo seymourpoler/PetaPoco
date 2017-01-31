@@ -130,6 +130,7 @@ namespace PetaPoco
         /// <typeparam name="T">The provider type.</typeparam>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="configure" /> is null.</exception>
         /// <returns>The configuration source to form a fluent interface.</returns>
+        //It uses no body
         public static IDatabaseBuildConfiguration UsingProvider<T>(this IDatabaseBuildConfiguration source, Action<T> configure)
             where T : class, IProvider, new()
         {
