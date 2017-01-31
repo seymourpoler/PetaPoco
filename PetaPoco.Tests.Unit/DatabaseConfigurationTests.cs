@@ -37,10 +37,10 @@ namespace PetaPoco.Tests.Unit
         }
 
         [Fact]
-        public void SetSetting_GivenKeyAndNull_ShouldRemoveSetting()
+        public void SetSetting_GivenKeyAndNullValue_ShouldRemoveSetting()
         {
-            ((IBuildConfigurationSettings) config).SetSetting("key", "value");
-            ((IBuildConfigurationSettings) config).SetSetting("key", null);
+            ((IBuildConfigurationSettings) config).SetSetting(key: "key", value: "value");
+            ((IBuildConfigurationSettings) config).SetSetting(key: "key", value: null);
             var getCalled = false;
 
             ((IBuildConfigurationSettings)config).TryGetSetting<string>(
@@ -79,7 +79,10 @@ namespace PetaPoco.Tests.Unit
         [Fact]
         public void TrySetSetting_GivenNullKey_Throws()
         {
-            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings)config).SetSetting(key: null, value: "value"));
+            Should.Throw<ArgumentNullException>(
+                () => ((IBuildConfigurationSettings) config).SetSetting(
+                    key: null,
+                    value: "value"));
         }
 
         [Fact]
