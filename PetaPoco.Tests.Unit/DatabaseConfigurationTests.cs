@@ -88,15 +88,21 @@ namespace PetaPoco.Tests.Unit
         [Fact]
         public void TryGetSetting_GivenNullKey_Throws()
         {
-            Should.Throw<ArgumentNullException>(() => ((IBuildConfigurationSettings) config).TryGetSetting<string>(key: null, setSetting: v => { }));
+            Should.Throw<ArgumentNullException>(
+                () => ((IBuildConfigurationSettings) config).TryGetSetting<string>(
+                    key: null,
+                    setSetting: v => { }));
         }
 
         [Fact]
         public void TryGetSetting_GivenNullCallback_Throws()
         {
-            ((IBuildConfigurationSettings) config).SetSetting("key", "value");
+            ((IBuildConfigurationSettings) config).SetSetting(key: "key", value: "value");
 
-            Should.Throw<NullReferenceException>(() => ((IBuildConfigurationSettings)config).TryGetSetting<string>(key: "key", setSetting: null));
+            Should.Throw<NullReferenceException>(
+                () => ((IBuildConfigurationSettings) config).TryGetSetting<string>(
+                    key: "key",
+                    setSetting: null));
         }
 
         [Fact]

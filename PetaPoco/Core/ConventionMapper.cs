@@ -86,19 +86,11 @@ namespace PetaPoco.Core
                     return true;
                 }
 
-                var prop = t.GetProperties().FirstOrDefault(p =>
-                {
-                    return p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase) ||
-                           p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase) ||
-                           p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase);
-                    //if (p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase))
-                    //    return true;
-                    //if (p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase))
-                    //    return true;
-                    //if (p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase))
-                    //    return true;
-                    //return false;
-                });
+                var prop = t.GetProperties()
+                    .FirstOrDefault(
+                        p => p.Name.Equals("Id", StringComparison.OrdinalIgnoreCase) ||
+                             p.Name.Equals(t.Name + "Id", StringComparison.OrdinalIgnoreCase) ||
+                             p.Name.Equals(t.Name + "_Id", StringComparison.OrdinalIgnoreCase));
 
                 if (prop == null)
                     return false;
