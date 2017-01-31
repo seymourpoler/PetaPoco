@@ -80,6 +80,7 @@ namespace PetaPoco
         /// <param name="provider">The provider to use.</param>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="provider" /> is null.</exception>
         /// <returns>The configuration source to form a fluent interface.</returns>
+        //It useed by no body
         public static IDatabaseBuildConfiguration UsingProvider<T>(this IDatabaseBuildConfiguration source, T provider)
             where T : class, IProvider
         {
@@ -98,6 +99,7 @@ namespace PetaPoco
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="provider" /> is null.</exception>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="configure" /> is null.</exception>
         /// <returns>The configuration source to form a fluent interface.</returns>
+        //It useed by no body
         public static IDatabaseBuildConfiguration UsingProvider<T>(this IDatabaseBuildConfiguration source, T provider, Action<T> configure)
             where T : class, IProvider
         {
@@ -130,7 +132,7 @@ namespace PetaPoco
         /// <typeparam name="T">The provider type.</typeparam>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="configure" /> is null.</exception>
         /// <returns>The configuration source to form a fluent interface.</returns>
-        //It uses no body
+        //It useed by no body
         public static IDatabaseBuildConfiguration UsingProvider<T>(this IDatabaseBuildConfiguration source, Action<T> configure)
             where T : class, IProvider, new()
         {
