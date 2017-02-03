@@ -35,7 +35,7 @@ namespace PetaPoco.Utilities
                 else
                 {
                     // Look for a property on one of the arguments with this name
-                    bool found = false;
+                    var found = false;
                     arg_val = null;
                     foreach (var o in args_src)
                     {
