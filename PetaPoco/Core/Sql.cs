@@ -124,7 +124,7 @@ namespace PetaPoco.Core
 
         private void Build(StringBuilder sb, List<object> args, Sql lhs)
         {
-            if (!string.IsNullOrEmpty(_sql))
+            if (!String.IsNullOrEmpty(_sql))
             {
                 // Add SQL to the string
                 if (sb.Length > 0)
