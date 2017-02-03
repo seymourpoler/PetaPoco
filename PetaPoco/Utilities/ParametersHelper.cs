@@ -19,7 +19,7 @@ namespace PetaPoco.Utilities
         {
             return rxParams.Replace(sql, m =>
             {
-                string param = m.Value.Substring(1);
+                var param = m.Value.Substring(1);
 
                 object arg_val;
 
