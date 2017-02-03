@@ -50,7 +50,7 @@ namespace PetaPoco.Utilities
 
                     if (!found)
                         throw new ArgumentException(
-                            string.Format("Parameter '@{0}' specified but none of the passed arguments have a property with this name (in '{1}')", param, sql));
+                            String.Format("Parameter '@{0}' specified but none of the passed arguments have a property with this name (in '{1}')", param, sql));
                 }
 
                 // Expand collections to parameter lists
