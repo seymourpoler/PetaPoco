@@ -66,11 +66,8 @@ namespace PetaPoco.Utilities
                     }
                     return sb.ToString();
                 }
-                else
-                {
-                    args_dest.Add(arg_val);
-                    return "@" + (args_dest.Count - 1).ToString();
-                }
+                args_dest.Add(arg_val);
+                return "@" + (args_dest.Count - 1).ToString();
             }
                 );
         }
