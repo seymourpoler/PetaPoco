@@ -344,7 +344,8 @@ namespace PetaPoco.Tests.Unit.Core
                 .Append(",[IsActive] = @0", resource.IsActive)
                 .Append(",[UpdatedBy] = @0", resource.UpdatedBy)
                 .Append(",[UpdatedDate] = @0", resource.UpdatedDate)
-                .Append(",[Extension] = @0", resource.Extension).Append(" WHERE ResourceID=@0", resource.ResourceID);
+                .Append(",[Extension] = @0", resource.Extension)
+                .Append(" WHERE ResourceID=@0", resource.ResourceID);
 
             _sql.SQL.Replace("\n", "")
                 .Replace("\r", "")
