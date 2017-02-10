@@ -344,12 +344,12 @@ namespace PetaPoco.Tests.Unit.Core
                 .Append(",[IsActive] = @0", resource.IsActive)
                 .Append(",[UpdatedBy] = @0", resource.UpdatedBy)
                 .Append(",[UpdatedDate] = @0", resource.UpdatedDate)
-                .Append(",[Extension] = @0", resource.Extension).Append(" WHERE ResourceID=@0", resource.ResourceID);
+                .Append(",[Extension] = @0", resource.Extension)
+                .Append(" WHERE ResourceID=@0", resource.ResourceID);
 
             _sql.SQL.Replace("\n", "")
                 .Replace("\r", "")
-                .ShouldBe(
-                    @"UPDATE [Resource] SET [ResourceName] = @0,[ResourceDescription] = @1,[ResourceContent] = @2,[ResourceData] = @3,[ResourceGUID] = @4,[LaunchPath] = @5,[ResourceType] = @6,[ContentType] = @7,[SchoolID] = @8,[DistrictID] = @9,[IsActive] = @10,[UpdatedBy] = @11,[UpdatedDate] = @12,[Extension] = @13 WHERE ResourceID=@14");
+                .ShouldBe(@"UPDATE [Resource] SET [ResourceName] = @0,[ResourceDescription] = @1,[ResourceContent] = @2,[ResourceData] = @3,[ResourceGUID] = @4,[LaunchPath] = @5,[ResourceType] = @6,[ContentType] = @7,[SchoolID] = @8,[DistrictID] = @9,[IsActive] = @10,[UpdatedBy] = @11,[UpdatedDate] = @12,[Extension] = @13 WHERE ResourceID=@14");
         }
 
         [Fact]
