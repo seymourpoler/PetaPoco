@@ -28,8 +28,11 @@ namespace PetaPoco.Utilities
                 {
                     // Numbered parameter
                     if (paramIndex < 0 || paramIndex >= args_src.Length)
-                        throw new ArgumentOutOfRangeException(string.Format("Parameter '@{0}' specified but only {1} parameters supplied (in `{2}`)", paramIndex,
-                            args_src.Length, sql));
+                    {
+                        var message = String.Format("Parameter '@{0}' specified but only {1} parameters supplied (in `{2}`)", paramIndex,
+                            args_src.Length, sql);
+                        throw new ArgumentOutOfRangeException(message);
+                    }
                     arg_val = args_src[paramIndex];
                 }
                 else
